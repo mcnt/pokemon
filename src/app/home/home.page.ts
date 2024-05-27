@@ -3,7 +3,6 @@ import { PokemonService } from '../pokemon.service';
 import { Router } from '@angular/router';
 import { PokemonListResponse, PokemonDetail } from '../models/pokemon.model';
 import { ModalController } from '@ionic/angular';
-import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -18,7 +17,7 @@ export class HomePage implements OnInit {
   favorites: Set<number> = new Set<number>();
   totalPokemons: number = 0
   pageSize: number = 7; // Número de páginas mostradas na paginação
-  constructor(private pokemonService: PokemonService, private router: Router, private modalController: ModalController) { }
+  constructor(private pokemonService: PokemonService, private modalController: ModalController) { }
 
   ngOnInit() {
     this.loadPokemons();
@@ -39,7 +38,7 @@ export class HomePage implements OnInit {
   }
   async openDetailsModal(pokemon: PokemonDetail) {
     const modal = await this.modalController.create({
-      component: PokemonDetailComponent,
+      component: '',
       componentProps: { pokemon }
     });
     return await modal.present();
