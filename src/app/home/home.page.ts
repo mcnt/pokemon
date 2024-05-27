@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   loading: boolean = false;
   favorites: Set<number> = new Set<number>();
   totalPokemons: number = 0
-  pageSize: number = 7; // Número de páginas mostradas na paginação
+  pageSize: number = 5; // Número de páginas mostradas na paginação
   constructor(private pokemonService: PokemonService, private modalController: ModalController) { }
 
   ngOnInit() {

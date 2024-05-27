@@ -3,9 +3,6 @@ ion-content {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
     gap: 16px; // Espaçamento entre os cards
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(1, 1fr); // Altera para 1 coluna
-    }
   }
   ion-card {
     display: flex;
@@ -52,6 +49,15 @@ ion-content {
       --padding-start: 8px;
       --padding-end: 8px;
     }
+    
   }
   
+}
+@media (max-width: 768px) {
+  ion-content {
+    .pokemon-grid {
+      grid-template-columns: repeat(1, 1fr); // Altera para 1 coluna
+    }
+  }
+ 
 }
