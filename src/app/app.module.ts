@@ -6,10 +6,11 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component'
+import { HttpClientModule } from '@angular/common/http';
+import { PokemonDetailComponent } from '../app/pokemon-detail/pokemon-detail.component';
 @NgModule({
-  declarations: [AppComponent, PokemonDetailComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  declarations: [AppComponent,PokemonDetailComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
