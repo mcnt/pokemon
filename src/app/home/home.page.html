@@ -1,20 +1,38 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Pokémon
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="pokemon-grid">
+    
+    <ion-card *ngFor="let pokemon of pokemons" >
+      <ion-button (click)="toggleFavorite(pokemon)" class="favorite-button" fill="clear">
+        <ion-icon [name]="isFavorite(pokemon) ? 'heart' : 'heart-outline'"></ion-icon>
+      </ion-button>
+      <div (click)="openDetailsModal(pokemon)" >
+        <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}">
+        <ion-card-header>
+          <ion-card-title>{{ pokemon.name | uppercase }}</ion-card-title>
+        </ion-card-header>
+      </div>
+    </ion-card>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div>
+  <div class="pagination">
+    <ion-button (click)="previousPage()" [disabled]="offset === 0">
+      &laquo;
+    </ion-button>
+    <div class="pages">
+      <ion-button *ngFor="let pageNumber of getPageNumbers()" (click)="goToPage(pageNumber)" [class.active]="isCurrentPage(pageNumber)">
+        {{ pageNumber }}
+      </ion-button>
+    </div>
+    <ion-button (click)="nextPage()" [disabled]="offset + limit >= totalPokemons">
+       &raquo;
+    </ion-button>
   </div>
 </ion-content>
