@@ -3,6 +3,7 @@ import { PokemonService } from '../pokemon.service';
 import { Router } from '@angular/router';
 import { PokemonListResponse, PokemonDetail } from '../models/pokemon.model';
 import { ModalController } from '@ionic/angular';
+import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -38,7 +39,7 @@ export class HomePage implements OnInit {
   }
   async openDetailsModal(pokemon: PokemonDetail) {
     const modal = await this.modalController.create({
-      component: '',
+      component: PokemonDetailComponent,
       componentProps: { pokemon }
     });
     return await modal.present();

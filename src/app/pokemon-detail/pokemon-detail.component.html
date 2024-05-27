@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ pokemon.name | uppercase }}</ion-title>
+    <ion-button (click)="close()" fill="clear" slot="end">
+      <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-modal">
+  <div class="pokemon-details">
+    <img class="pokemon-image" [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}">
+    <div class="pokemon-info">
+      <p><strong>Altura:</strong> {{ pokemon.height }}</p>
+      <p><strong>Peso:</strong> {{ pokemon.weight }}</p>
+      <p><strong>Habilidades:</strong></p>
+      <ul>
+        <li *ngFor="let ability of pokemon.abilities">{{ ability.ability.name }}</li>
+      </ul>
+      <p><strong>Tipos:</strong></p>
+      <ul>
+        <li *ngFor="let type of pokemon.types">{{ type.type.name }}</li>
+      </ul>
+    </div>
+  </div>
+</ion-content>
